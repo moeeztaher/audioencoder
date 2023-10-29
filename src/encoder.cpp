@@ -12,11 +12,7 @@ namespace
 {
     void encode_file(const std::filesystem::path& path)
     {
-       
-
-        
-        
-        cin::log::info("Encoding {}", path.string());
+       ::log::info("Encoding {}", path.string());
 
         cin::WavFile wav_file{path};
 
