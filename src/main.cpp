@@ -44,11 +44,12 @@ int main(int argc, const char* argv[])
         duration<double, std::milli> ms_double2 = t4 - t3;
 
         const unsigned int numCores = std::thread::hardware_concurrency();
-        std::cout<<"number of cores\n"<<numCores<<std::flush;
+        // std::cout<<"number of cores\n"<<numCores<<std::flush;
 
-         cin::log::debug(" Single thread: {:.2f} ms, Multi thread: {:.2f} ms",
+         cin::log::debug(" Single thread: {:.2f} ms, Multi thread: {:.2f} ms, number of cores: {}",
             ms_double.count(),
-            ms_double2.count()
+            ms_double2.count(),
+            numCores
             );
 
         return EXIT_SUCCESS;
