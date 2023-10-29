@@ -1,3 +1,0 @@
-/home/marty/encodertest/audioencoder/CMakeFiles/encoder.dir
-/home/marty/encodertest/audioencoder/CMakeFiles/edit_cache.dir
-/home/marty/encodertest/audioencoder/CMakeFiles/rebuild_cache.dir
