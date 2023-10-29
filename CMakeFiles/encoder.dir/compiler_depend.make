@@ -301,7 +301,18 @@ CMakeFiles/encoder.dir/src/encoder.cpp.o: src/encoder.cpp \
   /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
   /usr/include/c++/11/cstdarg \
   include/wav.h \
-  /usr/include/sndfile.h
+  /usr/include/sndfile.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/std_thread.h \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
+  /usr/include/c++/11/future \
+  /usr/include/c++/11/mutex \
+  /usr/include/c++/11/bits/std_mutex.h \
+  /usr/include/c++/11/bits/unique_lock.h \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/bits/atomic_futex.h
 
 CMakeFiles/encoder.dir/src/fs.cpp.o: src/fs.cpp \
   /usr/include/stdc-predef.h \
@@ -1690,6 +1701,10 @@ src/lame_wrapper.cpp:
 
 src/fs.cpp:
 
+/usr/include/c++/11/atomic:
+
+/usr/include/c++/11/mutex:
+
 /usr/include/sndfile.h:
 
 include/wav.h:
@@ -1723,6 +1738,8 @@ include/fmt/format-inl.h:
 /usr/include/strings.h:
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
+
+/usr/include/c++/11/bits/std_mutex.h:
 
 /usr/include/c++/11/tr1/poly_laguerre.tcc:
 
@@ -2010,6 +2027,8 @@ include/fmt/core.h:
 
 /usr/include/c++/11/bits/exception_ptr.h:
 
+/usr/include/c++/11/bits/atomic_futex.h:
+
 /usr/include/c++/11/ext/string_conversions.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
@@ -2054,6 +2073,8 @@ include/fmt/core.h:
 
 /usr/include/ctype.h:
 
+/usr/include/c++/11/bits/std_thread.h:
+
 /usr/include/c++/11/bits/cpp_type_traits.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
@@ -2071,6 +2092,8 @@ include/fmt/core.h:
 /usr/include/stdint.h:
 
 /usr/include/endian.h:
+
+/usr/include/c++/11/future:
 
 src/encoder.cpp:
 
@@ -2134,6 +2157,8 @@ src/encoder.cpp:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
 
+/usr/include/c++/11/iostream:
+
 /usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
@@ -2175,6 +2200,8 @@ src/encoder.cpp:
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
+
+/usr/include/c++/11/bits/this_thread_sleep.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
@@ -2226,6 +2253,10 @@ include/fs.h:
 
 /usr/include/c++/11/bits/fs_fwd.h:
 
+/usr/include/c++/11/condition_variable:
+
+/usr/include/c++/11/thread:
+
 /usr/include/c++/11/ratio:
 
 /usr/include/c++/11/bits/parse_numbers.h:
@@ -2245,6 +2276,8 @@ include/fs.h:
 /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h:
 
 /usr/include/c++/11/bits/locale_conv.h:
+
+/usr/include/c++/11/bits/unique_lock.h:
 
 /usr/include/c++/11/bits/uses_allocator.h:
 
