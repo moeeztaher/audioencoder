@@ -76,7 +76,7 @@ cin::Encoder::Encoder(cin::Paths&& paths)
 
 void cin::Encoder::encodemulti() const {
     const unsigned int numCores = std::thread::hardware_concurrency();
-    std::cout<<"number of cores\n"<<numCores<<std::flush;
+    // std::cout<<"number of cores\n"<<numCores<<std::flush;
     if (numCores <= 1 || m_paths.size() <= 1) {
         // Single-threaded encoding
         

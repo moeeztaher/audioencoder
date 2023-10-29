@@ -3,6 +3,7 @@
 #include "fs.h"
 #include "encoder.h"
 #include <chrono>
+#include <thread>
 
 int main(int argc, const char* argv[])
 {
@@ -40,6 +41,9 @@ int main(int argc, const char* argv[])
         /* Getting number of milliseconds as a double. */
         duration<double, std::milli> ms_double = t2 - t1;
         duration<double, std::milli> ms_double2 = t4 - t3;
+
+        const unsigned int numCores = std::thread::hardware_concurrency();
+        std::cout<<"number of cores\n"<<numCores<<std::flush;
 
          cin::log::debug(" Single thread: {:.2f} ms, Multi thread: {:.2f} ms",
             ms_double.count(),
