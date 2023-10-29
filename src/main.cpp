@@ -20,9 +20,9 @@ int main(int argc, const char* argv[])
         const cin::Encoder encoder{cin::get_valid_wav_files({argv[1]})};
 
         encoder.encode();
-        cout<<"test"
 
-        return EXIT_SUCCESS;
+
+        return "EXIT_SUCCESS";
     }
     catch (const std::runtime_error& error) {
         cin::log::error("Runtime error: {}", error.what());
