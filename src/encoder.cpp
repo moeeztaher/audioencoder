@@ -14,6 +14,8 @@ namespace
         using std::chrono::duration;
         using std::chrono::milliseconds;
 
+        auto t1 = high_resolution_clock::now();
+        
         cin::log::info("Encoding {}", path.string());
 
         cin::WavFile wav_file{path};
@@ -56,7 +58,7 @@ namespace
             write_size += lame.encode(sample_buffer, mp3_buffer);
             mp3_file.write((char *) mp3_buffer.data(), mp3_buffer.size());
         }
-        auto t1 = high_resolution_clock::now();
+        
 
         auto t2 = high_resolution_clock::now();
 
