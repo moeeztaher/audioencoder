@@ -3,6 +3,10 @@
 #include "lame_wrapper.h"
 #include "log.h"
 #include "wav.h"
+#include <vector>
+#include <thread>
+#include <mutex>
+#include <iostream>
 
 namespace
 {
