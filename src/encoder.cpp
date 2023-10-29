@@ -9,6 +9,11 @@ namespace
 {
     void encode_file(const std::filesystem::path& path)
     {
+        using std::chrono::high_resolution_clock;
+        using std::chrono::duration_cast;
+        using std::chrono::duration;
+        using std::chrono::milliseconds;
+
         cin::log::info("Encoding {}", path.string());
 
         cin::WavFile wav_file{path};
