@@ -29,14 +29,21 @@ int main(int argc, const char* argv[])
         encoder.encode();
         auto t2 = high_resolution_clock::now();
 
+        auto t3 = high_resolution_clock::now();
+        encoder.encodemulti();
+        auto t4 = high_resolution_clock::now();
+
         /* Getting number of milliseconds as an integer. */
         auto ms_int = duration_cast<milliseconds>(t2 - t1);
+        auto ms_int2 = duration_cast<milliseconds>(t4 - t3);
 
         /* Getting number of milliseconds as a double. */
         duration<double, std::milli> ms_double = t2 - t1;
+        duration<double, std::milli> ms_double2 = t4 - t3;
 
-         cin::log::debug(" Total time: {:.2f} ms ",
-            ms_double.count()
+         cin::log::debug(" Single thread: {:.2f} ms, Multi thread: {:.2f} ms",
+            ms_double.count(),
+            ms_double2.count()
             );
 
         return EXIT_SUCCESS;
