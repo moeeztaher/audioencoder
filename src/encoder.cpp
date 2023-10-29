@@ -15,7 +15,7 @@ namespace
         using std::chrono::milliseconds;
 
         auto t1 = high_resolution_clock::now();
-
+        
         cin::log::info("Encoding {}", path.string());
 
         cin::WavFile wav_file{path};
@@ -71,10 +71,10 @@ namespace
         constexpr float bytes_per_kib{1024.0F};
 
         cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller) in {:.2f} ms",
-            1.1234,
-            2.1234,
-            3.1234,
-            4.1234
+            read_size / bytes_per_kib,
+            write_size / bytes_per_kib,
+            1.0F * read_size / write_size,
+            ms_double.count()
             );
     }
 }

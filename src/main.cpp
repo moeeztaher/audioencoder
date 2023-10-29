@@ -21,11 +21,11 @@ int main(int argc, const char* argv[])
 
         encoder.encode();
 
-        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller) in 69 ms",
-            read_size / bytes_per_kib,
-            write_size / bytes_per_kib,
-            1.0F * read_size / write_size,
-            ms_double.count()
+         cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller) in {:.2f} ms",
+            1.1234,
+            2.1234,
+            3.1234,
+            4.1234
             );
 
         return EXIT_SUCCESS;
