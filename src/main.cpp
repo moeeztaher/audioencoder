@@ -20,6 +20,7 @@ int main(int argc, const char* argv[])
         const cin::Encoder encoder{cin::get_valid_wav_files({argv[1]})};
 
         encoder.encode();
+        cout<<"test"
 
         return EXIT_SUCCESS;
     }
