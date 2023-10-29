@@ -1,0 +1,17 @@
+find_path(LAME_INCLUDE_DIR lame/lame.h)
+find_library(LAME_LIBRARIES NAMES mp3lame)
+
+if (LAME_INCLUDE_DIR AND LAME_LIBRARIES)
+    set(LAME_FOUND TRUE)
+endif (LAME_INCLUDE_DIR AND LAME_LIBRARIES)
+
+if (LAME_FOUND)
+    if (NOT Lame_FIND_QUIETLY)
+        message(STATUS "Found lame includes: ${LAME_INCLUDE_DIR}/lame/lame.h")
+        message(STATUS "Found lame library: ${LAME_LIBRARIES}")
+    endif (NOT Lame_FIND_QUIETLY)
+else (LAME_FOUND)
+    if (Lame_FIND_REQUIRED)
+        message(FATAL_ERROR "Could NOT find lame development files")
+    endif (Lame_FIND_REQUIRED)
+endif (LAME_FOUND)
