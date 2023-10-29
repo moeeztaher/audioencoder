@@ -26,7 +26,7 @@ int main(int argc, const char* argv[])
         const cin::Encoder encoder{cin::get_valid_wav_files({argv[1]})};
 
         auto t1 = high_resolution_clock::now();
-        encoder.encode();
+        encoder.encodemulti();
         auto t2 = high_resolution_clock::now();
 
         auto t3 = high_resolution_clock::now();

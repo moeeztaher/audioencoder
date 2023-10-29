@@ -34,7 +34,6 @@ namespace cin
          *
          * @throws std::runtime_error in case of I/O or encoding issues.
          */
-        void encode() const;
         void encodemulti() const;
 
     private:

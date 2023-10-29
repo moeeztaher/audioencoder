@@ -117,23 +117,23 @@ void cin::Encoder::encodemulti() const {
 }
 
 
-void cin::Encoder::encode() const
-{
-    for (const auto& path: m_paths) {
-        try {
-            encode_file(path);
-        }
-        catch (const cin::WavFile::CouldNotRead& err) {
-            cin::log::error("Could not read {}: {}", path.c_str(), err.what());
-        }
-        catch (const cin::Encoder::UnsupportedFormat& err) {
-            cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
-        }
-        catch (const cin::Lame::ConfigurationFailure& err) {
-            cin::log::error("Could not configure LAME: {}", err.what());
-        }
-        catch (const cin::Lame::EncodeError& err) {
-            cin::log::error("Failed to encode samples: {}", err.what());
-        }
-    }
-}
+// void cin::Encoder::encode() const
+// {
+//     for (const auto& path: m_paths) {
+//         try {
+//             encode_file(path);
+//         }
+//         catch (const cin::WavFile::CouldNotRead& err) {
+//             cin::log::error("Could not read {}: {}", path.c_str(), err.what());
+//         }
+//         catch (const cin::Encoder::UnsupportedFormat& err) {
+//             cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
+//         }
+//         catch (const cin::Lame::ConfigurationFailure& err) {
+//             cin::log::error("Could not configure LAME: {}", err.what());
+//         }
+//         catch (const cin::Lame::EncodeError& err) {
+//             cin::log::error("Failed to encode samples: {}", err.what());
+//         }
+//     }
+// }
