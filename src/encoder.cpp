@@ -3,18 +3,14 @@
 #include "lame_wrapper.h"
 #include "log.h"
 #include "wav.h"
-#include <chrono>
 
 namespace
 {
     void encode_file(const std::filesystem::path& path)
     {
-        using std::chrono::high_resolution_clock;
-        using std::chrono::duration_cast;
-        using std::chrono::duration;
-        using std::chrono::milliseconds;
+       
 
-        auto t1 = high_resolution_clock::now();
+        
         
         cin::log::info("Encoding {}", path.string());
 
@@ -60,21 +56,12 @@ namespace
         }
         
 
-        auto t2 = high_resolution_clock::now();
-
-        /* Getting number of milliseconds as an integer. */
-        auto ms_int = duration_cast<milliseconds>(t2 - t1);
-
-        /* Getting number of milliseconds as a double. */
-        duration<double, std::milli> ms_double = t2 - t1;
-
         constexpr float bytes_per_kib{1024.0F};
 
-        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller) in {:.2f} ms",
+        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller)",
             read_size / bytes_per_kib,
             write_size / bytes_per_kib,
-            1.0F * read_size / write_size,
-            ms_double.count()
+            1.0F * read_size / write_size
             );
     }
 }
