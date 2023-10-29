@@ -15,7 +15,7 @@ add_executable(encoder
     src/wav.cpp
 )
 
-find_package(Lame REQUIRED)
+find_package(lame REQUIRED)
 find_package(Sndfile REQUIRED)
 
 list(APPEND INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include")
