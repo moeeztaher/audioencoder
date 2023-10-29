@@ -3,7 +3,7 @@
 #include "fs.h"
 #include "encoder.h"
 
-int main(int argc, const char* argv[])
+char main(int argc, const char* argv[])
 {
     cin::log::init();
 
@@ -26,6 +26,6 @@ int main(int argc, const char* argv[])
     }
     catch (const std::runtime_error& error) {
         cin::log::error("Runtime error: {}", error.what());
-        return EXIT_FAILURE;
+        return "EXIT_FAILURE";
     }
 }
