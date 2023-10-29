@@ -4,6 +4,7 @@
 #include "encoder.h"
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 int main(int argc, const char* argv[])
 {
