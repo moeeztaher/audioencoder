@@ -3,16 +3,16 @@
 #include "lame_wrapper.h"
 #include "log.h"
 #include "wav.h"
-#include <vector>
-#include <thread>
-#include <mutex>
-#include <iostream>
 
 namespace
 {
     void encode_file(const std::filesystem::path& path)
     {
-       ::log::info("Encoding {}", path.string());
+       
+
+        
+        
+        cin::log::info("Encoding {}", path.string());
 
         cin::WavFile wav_file{path};
 
@@ -70,70 +70,23 @@ cin::Encoder::Encoder(cin::Paths&& paths)
 : m_paths{std::move(paths)}
 {}
 
-void cin::Encoder::encode() const {
-    const unsigned int numCores = std::thread::hardware_concurrency();
-    std::cout<<"number of cores\n"<<numCores<<std::flush;
-    if (numCores <= 1 || m_paths.size() <= 1) {
-        // Single-threaded encoding
-        
-        for (const auto& path : m_paths) {
-            try {
-                encode_file(path);
-            } catch (const cin::WavFile::CouldNotRead& err) {
-                cin::log::error("Could not read {}: {}", path.c_str(), err.what());
-            } catch (const cin::Encoder::UnsupportedFormat& err) {
-                cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
-            } catch (const cin::Lame::ConfigurationFailure& err) {
-                cin::log::error("Could not configure LAME: {}", err.what());
-            } catch (const cin::Lame::EncodeError& err) {
-                cin::log::error("Failed to encode samples: {}", err.what());
-            }
+void cin::Encoder::encode() const
+{
+    for (const auto& path: m_paths) {
+        try {
+            encode_file(path);
         }
-    } else {
-        // Parallel encoding
-        const size_t filesPerThread = m_paths.size() / numCores;
-        std::vector<std::thread> threads;
-
-        for (unsigned int i = 0; i < numCores; ++i) {
-            auto start = m_paths.begin() + i * filesPerThread;
-            auto end = (i == numCores - 1) ? m_paths.end() : start + filesPerThread;
-            std::vector<std::filesystem::path> chunk(start, end);
-
-            threads.emplace_back([this, chunk]() {
-                for (const auto& path : chunk) {
-                    try {
-                        encode_file(path);
-                    } catch (const std::exception& err) {
-                        cin::log::error("Error processing {}: {}", path.c_str(), err.what());
-                    }
-                }
-            });
+        catch (const cin::WavFile::CouldNotRead& err) {
+            cin::log::error("Could not read {}: {}", path.c_str(), err.what());
         }
-
-        for (std::thread& thread : threads) {
-            thread.join();
+        catch (const cin::Encoder::UnsupportedFormat& err) {
+            cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
+        }
+        catch (const cin::Lame::ConfigurationFailure& err) {
+            cin::log::error("Could not configure LAME: {}", err.what());
+        }
+        catch (const cin::Lame::EncodeError& err) {
+            cin::log::error("Failed to encode samples: {}", err.what());
         }
     }
 }
-
-
-// void cin::Encoder::encode() const
-// {
-//     for (const auto& path: m_paths) {
-//         try {
-//             encode_file(path);
-//         }
-//         catch (const cin::WavFile::CouldNotRead& err) {
-//             cin::log::error("Could not read {}: {}", path.c_str(), err.what());
-//         }
-//         catch (const cin::Encoder::UnsupportedFormat& err) {
-//             cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
-//         }
-//         catch (const cin::Lame::ConfigurationFailure& err) {
-//             cin::log::error("Could not configure LAME: {}", err.what());
-//         }
-//         catch (const cin::Lame::EncodeError& err) {
-//             cin::log::error("Failed to encode samples: {}", err.what());
-//         }
-//     }
-// }
