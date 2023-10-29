@@ -62,11 +62,11 @@ namespace
 
         constexpr float bytes_per_kib{1024.0F};
 
-        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller)",
-            read_size / bytes_per_kib,
-            write_size / bytes_per_kib,
-            1.0F * read_size / write_size
-            );
+        // cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller)",
+        //     read_size / bytes_per_kib,
+        //     write_size / bytes_per_kib,
+        //     1.0F * read_size / write_size
+        //     );
     }
 }
 
@@ -116,6 +116,27 @@ void cin::Encoder::encodemulti() const {
 
         for (std::thread& thread : threads) {
             thread.join();
+        }
+    }
+}
+
+void cin::Encoder::encode() const
+{
+    for (const auto& path: m_paths) {
+        try {
+            encode_file(path);
+        }
+        catch (const cin::WavFile::CouldNotRead& err) {
+            cin::log::error("Could not read {}: {}", path.c_str(), err.what());
+        }
+        catch (const cin::Encoder::UnsupportedFormat& err) {
+            cin::log::error("{} has unsupported format: {}", path.c_str(), err.what());
+        }
+        catch (const cin::Lame::ConfigurationFailure& err) {
+            cin::log::error("Could not configure LAME: {}", err.what());
+        }
+        catch (const cin::Lame::EncodeError& err) {
+            cin::log::error("Failed to encode samples: {}", err.what());
         }
     }
 }
