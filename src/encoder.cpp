@@ -51,8 +51,8 @@ namespace
         constexpr float bytes_per_kib{1024.0F};
 
         cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller)",
-            read_size / bytes_per_kib,
-            write_size / bytes_per_kib,
+            100,
+            200,
             1.0F * read_size / write_size);
     }
 }
