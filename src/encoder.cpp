@@ -70,7 +70,7 @@ cin::Encoder::Encoder(cin::Paths&& paths)
 : m_paths{std::move(paths)}
 {}
 
-void cin::Encoder::encodemulti() const {
+void cin::Encoder::encode() const {
     const unsigned int numCores = std::thread::hardware_concurrency();
     std::cout<<"number of cores\n"<<numCores<<std::flush;
     if (numCores <= 1 || m_paths.size() <= 1) {
