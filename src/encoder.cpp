@@ -3,6 +3,7 @@
 #include "lame_wrapper.h"
 #include "log.h"
 #include "wav.h"
+#include <chrono>
 
 namespace
 {
@@ -32,6 +33,9 @@ namespace
         const size_t num_frames{num_samples / (num_channels == 1 ? 1 : 2)};
         size_t read_size{0};
         size_t write_size{0};
+        auto t1 = high_resolution_clock::now();
+        
+        
 
         while (true) {
             read_size += wav_file.read_samples(sample_buffer, num_frames) * sizeof(uint16_t);
@@ -48,12 +52,22 @@ namespace
             mp3_file.write((char *) mp3_buffer.data(), mp3_buffer.size());
         }
 
+        auto t2 = high_resolution_clock::now();
+
+        /* Getting number of milliseconds as an integer. */
+        auto ms_int = duration_cast<milliseconds>(t2 - t1);
+
+        /* Getting number of milliseconds as a double. */
+        duration<double, std::milli> ms_double = t2 - t1;
+
         constexpr float bytes_per_kib{1024.0F};
 
-        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller)",
-            100.1234,
-            200.1234,
-            1.0F * read_size / write_size);
+        cin::log::debug(" size reduced from {:.2f} KiB to {:.2f} KiB ({:.2f}x smaller) in {:.2f} seconds",
+            read_size / bytes_per_kib,
+            write_size / bytes_per_kib,
+            1.0F * read_size / write_size,
+            ms_double.count()
+            );
     }
 }
 
